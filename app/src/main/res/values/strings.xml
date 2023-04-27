@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">E-luh</string>
+    <string name="hyperlink"><a href="">Sign in</a></string>
+    <string name="register"><a href="">Register Here</a></string>
 </resources>
