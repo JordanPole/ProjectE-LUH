@@ -20,6 +20,9 @@
             android:exported="false" />
         <activity
             android:name=".AboutUs"
+            android:exported="false"/>
+        <activity
+            android:name=".Security"
             android:exported="true"/>
         <activity
             android:name=".MainActivity"
