@@ -2,7 +2,7 @@
     <string name="app_name">E-luh</string>
     <string name="hyperlink"><a href="">Sign in</a></string>
     <string name="register"><a href="">Register Here</a></string>
-    <string name="hmn"><a href="https://www.justice.gov/humantrafficking/what-is-human-trafficking"></a>Human Trafficking</string>
+    <string name="hmn"><![CDATA[<a href="https://www.justice.gov/humantrafficking/what-is-human-trafficking">Human Trafficking</a>]]></string>
     <string name="nxtpg"><a href="">Next</a></string>
 
 </resources>
