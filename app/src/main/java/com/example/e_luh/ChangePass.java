@@ -1,5 +1,13 @@
 package com.example.e_luh;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,24 +18,20 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 import android.widget.Toolbar;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class Security extends AppCompatActivity {
+public class ChangePass extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle actionBarDrawerToggle;
-    public Button button;
+    Button bConfirm, bCancel;
+    EditText etConfirmPass, etPassword;
+    boolean isAllFieldsChecked = false;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -37,26 +41,48 @@ public class Security extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar actionBar = getSupportActionBar();
 
         // Set the title for the ActionBar
-        actionBar.setTitle(Html.fromHtml("<font color=\"#FFFFFF\">" + "Security" + "</font>"));
+        actionBar.setTitle(Html.fromHtml("<font color=\"#FFFFFF\">" + "Change Password" + "</font>"));
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#006400")));
         // Enable the back button
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_security);
+        setContentView(R.layout.activity_change_pass);
 
-        button = findViewById(R.id.nxt);
+        bConfirm = findViewById(R.id.btnConfirm);
+        bCancel = findViewById(R.id.btnCancel);
+        etConfirmPass = findViewById(R.id.pass2);
+        etPassword = findViewById(R.id.pass);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        bConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(v.getContext(),AboutUs.class);
-                startActivity(intent);
+
+                // store the returned value of the dedicated function which checks
+                // whether the entered data is valid or if any fields are left blank.
+                isAllFieldsChecked = CheckAllFields();
+
+                // the boolean variable turns to be true then
+                // only the user must be proceed to the activity2
+                if (isAllFieldsChecked) {
+                    Toast.makeText(getApplicationContext(), "Password Changed", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(v.getContext(), ChangePass.class);
+                    startActivity(i);
+                }
+            }
+        });
+
+        bCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), ChangePass.class);
+                startActivity(i);
             }
         });
 
@@ -74,29 +100,28 @@ public class Security extends AppCompatActivity {
                 if (item.getItemId() == R.id.nav_home){
                     Log.i("MENU_DRAWER_TAG", "Home Item is clicked");
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    startActivity(new Intent(Security.this, Login.class));
+                    startActivity(new Intent(ChangePass.this, Login.class));
 
                 }
                 else if(item.getItemId() == R.id.nav_security){
                     Log.i("MENU_DRAWER_TAG", "Security Item is clicked");
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    startActivity(new Intent(Security.this, Security.class));
+                    startActivity(new Intent(ChangePass.this, Security.class));
                 }
-                else if(item.getItemId() == R.id.nav_about) {
+                else if(item.getItemId() == R.id.nav_about){
                     Log.i("MENU_DRAWER_TAG", "About Us Item is clicked");
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    startActivity(new Intent(Security.this, AboutUs.class));
+                    startActivity(new Intent(ChangePass.this, AboutUs.class));
                 }
                 else if(item.getItemId() == R.id.nav_changePass){
                     Log.i("MENU_DRAWER_TAG", "Change Password Item is clicked");
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    startActivity(new Intent(Security.this, ChangePass.class));
+                    startActivity(new Intent(ChangePass.this, ChangePass.class));
                 }
                 else if(item.getItemId() == R.id.nav_logout){
-                    Log.i("MENU_DRAWER_TAG", "Logout is clicked");
+                    Log.i("MENU_DRAWER_TAG", "Logout successful");
                     drawerLayout.closeDrawer(GravityCompat.START);
                     logout();
-
                 }
 
                 return true;
@@ -104,15 +129,39 @@ public class Security extends AppCompatActivity {
         });
     }
 
+
+
+    private boolean CheckAllFields() {
+        String password = etPassword.getText().toString();
+        String password2 = etConfirmPass.getText().toString();
+
+        if (etConfirmPass.length() == 0) {
+            etConfirmPass.setError("This field is required");
+            return false;
+        }
+
+        if (etPassword.length() == 0) {
+            etPassword.setError("This field is required");
+            return false;
+        }
+        if (!password.equals(password2)) {
+            Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        // after all validation return true.
+        return true;
+    }
+
     public void logout() {
-        AlertDialog.Builder builder=new AlertDialog.Builder(Security.this); //Home is name of the activity
+        AlertDialog.Builder builder=new AlertDialog.Builder(ChangePass.this); //Home is name of the activity
         builder.setMessage("Do you want to LOGOUT?");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
 
 //                finish();
-                Intent i=new Intent(Security.this, MainActivity.class);
+                Intent i=new Intent(ChangePass.this, MainActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
                 startActivity(i);
 
@@ -128,10 +177,5 @@ public class Security extends AppCompatActivity {
 
         AlertDialog alert=builder.create();
         alert.show();
-
-
-        return;
     }
-
-
 }

@@ -48,6 +48,8 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Login.this.finish();
                 System.exit(0);
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -75,6 +77,7 @@ public class Login extends AppCompatActivity {
             etPassword.setError("This field is required");
             return false;
         }
+
 
         // after all validation return true.
         return true;

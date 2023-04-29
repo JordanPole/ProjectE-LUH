@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Registration extends AppCompatActivity {
 
@@ -80,7 +81,7 @@ public class Registration extends AppCompatActivity {
         }
 
         if (!password2.equals(password)) {
-            etPassword2.setError("Passwords do not match");
+            Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
             return false;
         }
 

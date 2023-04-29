@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="@android:color/black"
+    android:gravity="center"
+    >
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@drawable/eluh"/>
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chango"
+        android:text="E-LUH: \nAnti Human-Trafficking"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:gravity="center"/>
+
+
+</LinearLayout>

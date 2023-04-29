@@ -4,5 +4,8 @@
     <string name="register"><a href="">Register Here</a></string>
     <string name="hmn"><![CDATA[<a href="https://www.justice.gov/humantrafficking/what-is-human-trafficking">Human Trafficking</a>]]></string>
     <string name="nxtpg">Next</string>
+    <string name="menu_Open">Open</string>
+    <string name="menu_Close">Close</string>
+    <string name="title_activity_activitiy_changepass">activitiy_changepass</string>
 
 </resources>
