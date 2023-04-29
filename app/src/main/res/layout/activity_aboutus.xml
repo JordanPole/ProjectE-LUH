@@ -69,7 +69,7 @@
         <TextView
             android:id="@+id/human"
             android:layout_width="210dp"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:clickable="true"
             android:fontFamily="@font/comic_neue"
             android:text="@string/hmn"
