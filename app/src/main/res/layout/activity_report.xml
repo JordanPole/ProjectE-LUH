@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    tools:context=".Report"
+    android:background="@drawable/green">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:text="Report an incident"
+        android:textSize="34sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please describe what you have seen or experienced."
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/incidentReport"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:textColor="#000000"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/bt_pick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#000000"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/audiowide"
+        android:text="Pick Photo"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:iconTint="#000000" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:id="@+id/recycler_view"
+        android:layout_marginTop="16dp"
+        tools:listitem="@layout/item_main" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="#000000"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/audiowide"
+        android:text="Submit Response"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:iconTint="#000000" />
+
+</LinearLayout>
