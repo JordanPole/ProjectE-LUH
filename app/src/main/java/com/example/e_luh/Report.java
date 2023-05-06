@@ -53,13 +53,21 @@ public class Report extends AppCompatActivity implements EasyPermissions.Permiss
     Toolbar toolbar;
     ActionBarDrawerToggle actionBarDrawerToggle;
 
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         ActionBar actionBar = getSupportActionBar();
 
         // Set the title for the ActionBar
-        actionBar.setTitle(Html.fromHtml("<font color=\"#FFFFFF\">" + "Homepage" + "</font>"));
+        actionBar.setTitle(Html.fromHtml("<font color=\"#FFFFFF\">" + "Home" + "</font>"));
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#006400")));
         // Enable the back button
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -74,6 +82,8 @@ public class Report extends AppCompatActivity implements EasyPermissions.Permiss
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.menu_Open, R.string.menu_Close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+        actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
