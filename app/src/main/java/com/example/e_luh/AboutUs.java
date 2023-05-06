@@ -66,7 +66,7 @@ public class AboutUs extends AppCompatActivity {
                 if (item.getItemId() == R.id.nav_home){
                     Log.i("MENU_DRAWER_TAG", "Home Item is clicked");
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    startActivity(new Intent(AboutUs.this, Login.class));
+                    startActivity(new Intent(AboutUs.this, Report.class));
                 }
                 else if(item.getItemId() == R.id.nav_security){
                 Log.i("MENU_DRAWER_TAG", "Your Security Item is clicked");

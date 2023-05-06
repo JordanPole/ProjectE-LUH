@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity  {
 
     Button bProceed, bCancel;
     EditText etUsername, etPassword;
@@ -27,6 +27,7 @@ public class Login extends AppCompatActivity {
         etPassword = findViewById(R.id.password4);
 
         bProceed.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
