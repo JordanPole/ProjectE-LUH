@@ -100,7 +100,7 @@ public class ChangePass extends AppCompatActivity {
                 if (item.getItemId() == R.id.nav_home){
                     Log.i("MENU_DRAWER_TAG", "Home Item is clicked");
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    startActivity(new Intent(ChangePass.this, Login.class));
+                    startActivity(new Intent(ChangePass.this, Report.class));
 
                 }
                 else if(item.getItemId() == R.id.nav_security){
