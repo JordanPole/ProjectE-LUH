@@ -1,5 +1,6 @@
 package com.example.e_luh;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
@@ -37,6 +45,9 @@ public class Login extends AppCompatActivity {
                 // the boolean variable turns to be true then
                 // only the user must be proceed to the activity2
                 if (isAllFieldsChecked) {
+
+                        checkUser();
+
                     Intent i = new Intent(Login.this, Report.class);
                     startActivity(i);
                 }
@@ -79,5 +90,40 @@ public class Login extends AppCompatActivity {
 
         // after all validation return true.
         return true;
+    }
+
+    public void checkUser(){
+        String userUsername = etUsername.getText().toString().trim();
+        String userPassword = etPassword.getText().toString().trim();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
+        checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    etUsername.setError(null);
+                    String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
+                    if (passwordFromDB.equals(userPassword)) {
+                        etUsername.setError(null);
+                        String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
+                        String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
+                        Intent intent = new Intent(Login.this, Report.class);
+                        intent.putExtra("email", emailFromDB);
+                        intent.putExtra("username", usernameFromDB);
+                        intent.putExtra("password", passwordFromDB);
+                        startActivity(intent);
+                    } else {
+                        etPassword.setError("Invalid Credentials");
+                        etPassword.requestFocus();
+                    }
+                } else {
+                    etUsername.setError("User does not exist");
+                    etUsername.requestFocus();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 }

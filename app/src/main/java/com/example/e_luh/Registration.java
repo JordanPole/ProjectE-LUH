@@ -15,10 +15,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Registration extends AppCompatActivity {
 
     Button bProceed;
     EditText etUsername, etPassword, etPassword2, etEmail;
+
+    FirebaseDatabase database;
+    DatabaseReference reference;
     boolean isAllFieldsChecked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,18 @@ public class Registration extends AppCompatActivity {
                 // the boolean variable turns to be true then
                 // only the user must be proceed to the activity2
                 if (isAllFieldsChecked) {
+
+                    database = FirebaseDatabase.getInstance();
+                    reference = database.getReference("users");
+
+                    String username = etUsername.getText().toString();
+                    String password = etPassword2.getText().toString();
+                    String email = etEmail.getText().toString();
+
+                    HelperClass helperClass = new HelperClass(username, email, password);
+                    reference.child(username).setValue(helperClass);
+
+                    Toast.makeText(Registration.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(Registration.this, Login.class);
                     startActivity(i);
                 }

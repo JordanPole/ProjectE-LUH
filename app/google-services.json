@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "746544764878",
+    "project_id": "project-eluh",
+    "storage_bucket": "project-eluh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746544764878:android:29e2fab06123980c283d9f",
+        "android_client_info": {
+          "package_name": "com.example.e_luh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746544764878-vn3vhvasc4t2elo8nlohbu3jvo41vsi4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKrQjj6bHK29p2mTRYlRqRlKBXCXVDbXM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746544764878-vn3vhvasc4t2elo8nlohbu3jvo41vsi4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

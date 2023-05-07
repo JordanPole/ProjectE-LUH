@@ -170,7 +170,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#000000"
         android:fontFamily="@font/audiowide"
-        android:text="REGISTER"
+        android:text="@string/signup"
         android:textColor="#FFFFFF"
         app:iconTint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
