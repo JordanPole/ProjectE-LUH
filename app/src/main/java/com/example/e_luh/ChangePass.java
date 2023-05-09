@@ -14,15 +14,29 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class ChangePass extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -33,6 +47,8 @@ public class ChangePass extends AppCompatActivity {
     EditText etConfirmPass, etPassword;
     boolean isAllFieldsChecked = false;
 
+
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -41,6 +57,7 @@ public class ChangePass extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +77,7 @@ public class ChangePass extends AppCompatActivity {
         etConfirmPass = findViewById(R.id.pass2);
         etPassword = findViewById(R.id.pass);
 
+
         bConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,9 +89,8 @@ public class ChangePass extends AppCompatActivity {
                 // the boolean variable turns to be true then
                 // only the user must be proceed to the activity2
                 if (isAllFieldsChecked) {
-                    Toast.makeText(getApplicationContext(), "Password Changed", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(v.getContext(), ChangePass.class);
-                    startActivity(i);
+                    updatePassword();
+
                 }
             }
         });
@@ -128,8 +145,40 @@ public class ChangePass extends AppCompatActivity {
             }
         });
     }
+    public void updatePassword(){
+        String user1 = Login.user;
+        String userPassword = etPassword.getText().toString().trim();
 
 
+
+        new AlertDialog.Builder(this)
+                .setTitle("Change Password")
+                .setMessage("Are you sure you want to change your password? This action cannot be undone.")
+
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Continue with confirm operation
+                        DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("users").child(user1);
+                        Map<String, Object> updates = new HashMap<String,Object>();
+                        updates.put("password", userPassword);
+
+                        ref.updateChildren(updates);
+
+                        Toast.makeText(getApplicationContext(), "Password Changed", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(ChangePass.this, ChangePass.class);
+                        startActivity(i);
+                    }
+                })
+
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
+
+    }
 
     private boolean CheckAllFields() {
         String password = etPassword.getText().toString();
@@ -152,6 +201,7 @@ public class ChangePass extends AppCompatActivity {
         // after all validation return true.
         return true;
     }
+
 
     public void logout() {
         AlertDialog.Builder builder=new AlertDialog.Builder(ChangePass.this); //Home is name of the activity
