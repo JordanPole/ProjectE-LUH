@@ -48,8 +48,6 @@ public class Login extends AppCompatActivity {
 
                         checkUser();
 
-                    Intent i = new Intent(Login.this, Report.class);
-                    startActivity(i);
                 }
             }
         });
