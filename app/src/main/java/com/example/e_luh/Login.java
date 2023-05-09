@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
+    public static String user;
     Button bProceed, bCancel;
     EditText etUsername, etPassword;
     boolean isAllFieldsChecked = false;
@@ -48,6 +49,9 @@ public class Login extends AppCompatActivity {
 
                         checkUser();
 
+                        user = etUsername.getText().toString();
+                    Intent i = new Intent(Login.this, Report.class);
+                    startActivity(i);
                 }
             }
         });
