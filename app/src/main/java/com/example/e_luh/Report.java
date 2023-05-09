@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -28,30 +29,36 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import droidninja.filepicker.FilePickerBuilder;
 import droidninja.filepicker.FilePickerConst;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class Report extends AppCompatActivity implements EasyPermissions.PermissionCallbacks{
+public class Report extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
     //Initialize variable
     Button btPick;
     RecyclerView recyclerView;
-
     Button proceed;
     EditText report;
-
+    String user1 = Login.user;
+    FirebaseDatabase database;
+    DatabaseReference reference;
     ArrayList<Uri> arrayList = new ArrayList<>();
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle actionBarDrawerToggle;
+    TextView textView;
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -74,8 +81,6 @@ public class Report extends AppCompatActivity implements EasyPermissions.Permiss
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
-
-
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigationView);
@@ -159,6 +164,15 @@ public class Report extends AppCompatActivity implements EasyPermissions.Permiss
                     Toast.makeText(getApplicationContext(), "Please do specify what had happened", Toast.LENGTH_SHORT).show();
                 }
                 else{
+                    database = FirebaseDatabase.getInstance();
+                    reference = database.getReference("reports");
+                    Map<String, Object> userReport = new HashMap<>();
+
+                    userReport.put("Username", user1);
+                    userReport.put("Details", incident);
+
+                    reference.child("report").push().setValue(userReport);
+
                     Intent i = new Intent(Report.this, Security.class);
                     startActivity(i);
                 }
