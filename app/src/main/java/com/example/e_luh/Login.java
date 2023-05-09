@@ -48,10 +48,6 @@ public class Login extends AppCompatActivity {
                 if (isAllFieldsChecked) {
 
                         checkUser();
-
-                        user = etUsername.getText().toString();
-                    Intent i = new Intent(Login.this, Report.class);
-                    startActivity(i);
                 }
             }
         });
@@ -103,6 +99,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
+                    user = etUsername.getText().toString();
                     etUsername.setError(null);
                     String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
                     if (passwordFromDB.equals(userPassword)) {

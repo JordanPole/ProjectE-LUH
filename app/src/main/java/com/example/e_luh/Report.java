@@ -1,10 +1,15 @@
 package com.example.e_luh;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
@@ -49,16 +54,15 @@ public class Report extends AppCompatActivity implements EasyPermissions.Permiss
     RecyclerView recyclerView;
     Button proceed;
     EditText report;
+    EditText landmark;
     String user1 = Login.user;
     FirebaseDatabase database;
     DatabaseReference reference;
     ArrayList<Uri> arrayList = new ArrayList<>();
-
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle actionBarDrawerToggle;
-    TextView textView;
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -67,7 +71,6 @@ public class Report extends AppCompatActivity implements EasyPermissions.Permiss
         }
         return super.onOptionsItemSelected(item);
     }
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -88,7 +91,6 @@ public class Report extends AppCompatActivity implements EasyPermissions.Permiss
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
-
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -131,6 +133,7 @@ public class Report extends AppCompatActivity implements EasyPermissions.Permiss
         recyclerView = findViewById(R.id.recycler_view);
         proceed = findViewById(R.id.submit);
         report = findViewById(R.id.incidentReport);
+        landmark = findViewById(R.id.landmark);
 
         //Set listener on button
         btPick.setOnClickListener(view -> {
@@ -159,6 +162,7 @@ public class Report extends AppCompatActivity implements EasyPermissions.Permiss
             public void onClick(View view) {
 
                 String incident = report.getText().toString();
+                String loc = landmark.getText().toString();
 
                 if(incident.equals("")){
                     Toast.makeText(getApplicationContext(), "Please do specify what had happened", Toast.LENGTH_SHORT).show();
@@ -170,6 +174,7 @@ public class Report extends AppCompatActivity implements EasyPermissions.Permiss
 
                     userReport.put("Username", user1);
                     userReport.put("Details", incident);
+                    userReport.put("Location", loc);
 
                     reference.child("report").push().setValue(userReport);
 

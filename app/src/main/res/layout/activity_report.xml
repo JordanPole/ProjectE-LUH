@@ -17,12 +17,43 @@
             android:id="@+id/recycler_view"
             android:layout_width="375dp"
             android:layout_height="200dp"
-            android:layout_marginTop="272dp"
+            android:layout_marginTop="290dp"
             android:background="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_main" />
+
+        <Button
+            android:id="@+id/bt_pick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="488dp"
+            android:backgroundTint="#100F0F"
+            android:fontFamily="@font/audiowide"
+            android:text="Pick Photo"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="375dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="548dp"
+            android:backgroundTint="#100F0F"
+            android:fontFamily="@font/audiowide"
+            android:text="Submit Response"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:iconTint="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView18"
@@ -36,36 +67,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="375dp"
-            android:layout_height="57dp"
-            android:layout_marginTop="530dp"
-            android:backgroundTint="#100F0F"
-            android:fontFamily="@font/audiowide"
-            android:text="Submit Response"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            app:iconTint="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="375dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="60dp"
             android:backgroundTint="#ffffff"
-            android:hint="Details of the incident"
+            android:hint="Current Location / Nearest Landmark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/incidentReport"
+                android:id="@+id/landmark"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:backgroundTint="#ffffff"
                 android:ems="10"
                 android:gravity="start|top"
@@ -79,20 +94,32 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/bt_pick"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="375dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="472dp"
-            android:backgroundTint="#100F0F"
-            android:fontFamily="@font/audiowide"
-            android:text="Pick Photo"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
+            android:layout_marginTop="130dp"
+            android:backgroundTint="#ffffff"
+            android:hint="Details of the incident"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.064"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/incidentReport"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:backgroundTint="#ffffff"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.257" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
