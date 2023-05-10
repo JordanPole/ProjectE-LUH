@@ -247,7 +247,7 @@ public class Report extends AppCompatActivity implements EasyPermissions.Permiss
     }
     public void logout() {
         AlertDialog.Builder builder=new AlertDialog.Builder(Report.this); //Home is name of the activity
-        builder.setMessage("Do you want to LOGOUT?");
+        builder.setMessage("Do you want to log out?");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {

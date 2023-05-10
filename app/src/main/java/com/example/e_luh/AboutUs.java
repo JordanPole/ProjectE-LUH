@@ -101,7 +101,7 @@ public class AboutUs extends AppCompatActivity {
     }
     public void logout() {
         AlertDialog.Builder builder=new AlertDialog.Builder(AboutUs.this); //Home is name of the activity
-        builder.setMessage("Do you want to LOGOUT?");
+        builder.setMessage("Do you want to log out?");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {

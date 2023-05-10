@@ -18,6 +18,7 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -46,6 +47,7 @@ public class ChangePass extends AppCompatActivity {
     Button bConfirm, bCancel;
     EditText etConfirmPass, etPassword;
     boolean isAllFieldsChecked = false;
+    boolean passwordVisible;
 
 
 
@@ -76,6 +78,55 @@ public class ChangePass extends AppCompatActivity {
         bCancel = findViewById(R.id.btnCancel);
         etConfirmPass = findViewById(R.id.pass2);
         etPassword = findViewById(R.id.pass);
+
+        etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int Right=2;
+                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    if(motionEvent.getRawX()>=etPassword.getRight()-etPassword.getCompoundDrawables()[Right].getBounds().width()) {
+                        int selection = etPassword.getSelectionEnd();
+                        if(passwordVisible){
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility_off, 0);
+                            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible = false;
+                        }else{
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility_on, 0);
+                            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible = true;
+                        }
+                        etPassword.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+        etConfirmPass.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int Right=2;
+                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    if(motionEvent.getRawX()>=etConfirmPass.getRight()-etConfirmPass.getCompoundDrawables()[Right].getBounds().width()) {
+                        int selection = etPassword.getSelectionEnd();
+                        if(passwordVisible){
+                            etConfirmPass.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility_off, 0);
+                            etConfirmPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible = false;
+                        }else{
+                            etConfirmPass.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility_on, 0);
+                            etConfirmPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible = true;
+                        }
+                        etConfirmPass.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
 
 
         bConfirm.setOnClickListener(new View.OnClickListener() {
@@ -205,7 +256,7 @@ public class ChangePass extends AppCompatActivity {
 
     public void logout() {
         AlertDialog.Builder builder=new AlertDialog.Builder(ChangePass.this); //Home is name of the activity
-        builder.setMessage("Do you want to LOGOUT?");
+        builder.setMessage("Do you want to log out?");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
