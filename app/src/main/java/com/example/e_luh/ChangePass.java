@@ -168,7 +168,7 @@ public class ChangePass extends AppCompatActivity {
                 if (item.getItemId() == R.id.nav_home){
                     Log.i("MENU_DRAWER_TAG", "Home Item is clicked");
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    startActivity(new Intent(ChangePass.this, Report.class));
+                    startActivity(new Intent(ChangePass.this, SampleOnly.class));
 
                 }
                 else if(item.getItemId() == R.id.nav_security){
@@ -212,6 +212,7 @@ public class ChangePass extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         // Continue with confirm operation
                         DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("users").child(user1);
+
                         Map<String, Object> updates = new HashMap<String,Object>();
                         updates.put("password", userPassword);
 

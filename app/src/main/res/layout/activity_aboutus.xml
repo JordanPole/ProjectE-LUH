@@ -64,39 +64,40 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.096"
+            app:layout_constraintHorizontal_bias="0.283"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.652" />
+            app:layout_constraintVertical_bias="0.587" />
 
         <TextView
             android:id="@+id/human"
-            android:layout_width="210dp"
-            android:layout_height="48dp"
+            android:layout_width="189dp"
+            android:layout_height="79dp"
             android:clickable="true"
             android:fontFamily="@font/comic_neue"
             android:text="@string/hmn"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.736"
+            app:layout_constraintHorizontal_bias="0.882"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.682" />
+            app:layout_constraintVertical_bias="0.628" />
 
         <TextView
             android:id="@+id/textView14"
-            android:layout_width="353dp"
-            android:layout_height="51dp"
+            android:layout_width="351dp"
+            android:layout_height="59dp"
             android:fontFamily="@font/comic_neue"
             android:text="This application is developed by ELUH company in partnership with Philippine National Police (PNP)."
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.551"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.807" />
+            app:layout_constraintVertical_bias="0.736" />
 
         <TextView
             android:id="@+id/textView15"
