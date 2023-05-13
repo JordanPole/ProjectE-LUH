@@ -275,7 +275,7 @@ public class SampleOnly extends AppCompatActivity {
                                                     "Thank you for submitting an incident report.",
                                                     Toast.LENGTH_SHORT)
                                             .show();
-                                    Intent i = new Intent(SampleOnly.this, Security.class);
+                                    Intent i = new Intent(SampleOnly.this, Sent.class);
                                     startActivity(i);
                                 }
                             })

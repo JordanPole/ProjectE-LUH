@@ -29,8 +29,8 @@
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="350dp"
-            android:layout_height="61dp"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/comic_neue"
             android:text="1. Make sure that you are in a safe place when submitting a report."
             android:textSize="18sp"
@@ -40,52 +40,52 @@
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.231" />
+            app:layout_constraintVertical_bias="0.25" />
 
         <TextView
             android:id="@+id/textView13"
-            android:layout_width="350dp"
-            android:layout_height="119dp"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/comic_neue"
             android:text="2. We assure you that the information of your account is safe unless we have your permission or are legally obliged to do so. We may contact you for further information."
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.294" />
+            app:layout_constraintVertical_bias="0.383" />
 
         <TextView
             android:id="@+id/textView16"
-            android:layout_width="350dp"
-            android:layout_height="140dp"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/comic_neue"
             android:text="3. E-LUH will never store your photos or videos that you upload but it may be used as evidence or additional details to the papers. Make sure to delete your photos and videos after sending a report."
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.544" />
+            app:layout_constraintVertical_bias="0.595" />
 
         <TextView
             android:id="@+id/textView17"
-            android:layout_width="350dp"
-            android:layout_height="130dp"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/comic_neue"
             android:text="4. To keep the application hidden on your phone, you can merge it with another app. You can hold your finger on the app and drag it into another app to group them."
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.806" />
+            app:layout_constraintVertical_bias="0.788" />
 
         <Button
             android:id="@+id/nxt"

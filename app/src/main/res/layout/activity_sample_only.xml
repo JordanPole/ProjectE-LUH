@@ -38,7 +38,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="100dp"
             android:id="@+id/incidentReport"
             android:layout_marginTop="15dp"
             android:background="@drawable/et_style"
@@ -61,8 +61,8 @@
 
         <ImageView
             android:id="@+id/imgView"
-            android:layout_width="451dp"
-            android:layout_height="385dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:background="#000"
             android:padding="10dp" />
 
