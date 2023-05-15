@@ -52,7 +52,6 @@ public class Registration extends AppCompatActivity {
 
                     database = FirebaseDatabase.getInstance();
                     reference = database.getReference("users");
-
                     String username = etUsername.getText().toString();
                     String password = etPassword2.getText().toString();
                     String email = etEmail.getText().toString();

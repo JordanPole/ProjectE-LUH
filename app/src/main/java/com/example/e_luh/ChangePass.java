@@ -149,7 +149,7 @@ public class ChangePass extends AppCompatActivity {
         bCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), ChangePass.class);
+                Intent i = new Intent(v.getContext(), SampleOnly.class);
                 startActivity(i);
             }
         });

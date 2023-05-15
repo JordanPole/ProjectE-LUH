@@ -41,29 +41,22 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-
 public class SampleOnly extends AppCompatActivity {
     private Button btnSelect, btnUpload;
-
     // view for image view
     private ImageView imageView;
-
     // Uri indicates, where the image will be picked from
     private Uri filePath;
-
     // request code
     private final int PICK_IMAGE_REQUEST = 22;
-
     // instance for firebase storage and StorageReference
     FirebaseStorage storage;
     StorageReference storageReference;
     FirebaseDatabase database;
     DatabaseReference reference;
-
     String user1 = Login.user;
     EditText report;
     EditText landmark;
-
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
@@ -80,9 +73,7 @@ public class SampleOnly extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         ActionBar actionBar = getSupportActionBar();
-
         // Set the title for the ActionBar
         actionBar.setTitle(Html.fromHtml("<font color=\"#FFFFFF\">" + "Home" + "</font>"));
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#006400")));
@@ -92,15 +83,12 @@ public class SampleOnly extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sample_only);
 
-
         // initialise views
         btnSelect = findViewById(R.id.btnChoose);
         btnUpload = findViewById(R.id.btnUpload);
         imageView = findViewById(R.id.imgView);
         report = findViewById(R.id.incidentReport);
         landmark = findViewById(R.id.landmark);
-
-
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigationView);
@@ -145,7 +133,6 @@ public class SampleOnly extends AppCompatActivity {
         });
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-
         // on pressing btnSelect SelectImage() is called
         btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,13 +140,10 @@ public class SampleOnly extends AppCompatActivity {
                 SelectImage();
             }
         });
-
         // on pressing btnUpload uploadImage() is called
         btnUpload.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-
                 String incident = report.getText().toString();
                 String loc = landmark.getText().toString();
                 if(incident.equals("")){
@@ -177,7 +161,6 @@ public class SampleOnly extends AppCompatActivity {
                     reference.child("report").push().setValue(userReport);
 
                     uploadImage();
-
                 }
             }
         });
@@ -220,11 +203,9 @@ public class SampleOnly extends AppCompatActivity {
                 && resultCode == RESULT_OK
                 && data != null
                 && data.getData() != null) {
-
             // Get the Uri of data
             filePath = data.getData();
             try {
-
                 // Setting image on image view using Bitmap
                 Bitmap bitmap = MediaStore
                         .Images
@@ -243,39 +224,33 @@ public class SampleOnly extends AppCompatActivity {
     // UploadImage method
     private void uploadImage() {
         if (filePath != null) {
-
             // Code for showing progressDialog while uploading
             ProgressDialog progressDialog
                     = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
-
             // Defining the child of storageReference
             StorageReference ref
                     = storageReference
                     .child(
                             "images/"
                                     + UUID.randomUUID().toString());
-
             // adding listeners on upload
             // or failure of image
             ref.putFile(filePath)
                     .addOnSuccessListener(
                             new OnSuccessListener<UploadTask.TaskSnapshot>() {
-
                                 @Override
                                 public void onSuccess(
                                         UploadTask.TaskSnapshot taskSnapshot) {
-
                                     // Image uploaded successfully
                                     // Dismiss dialog
                                     progressDialog.dismiss();
-                                    Toast
-                                            .makeText(SampleOnly.this,
+                                    Toast.makeText(SampleOnly.this,
                                                     "Thank you for submitting an incident report.",
                                                     Toast.LENGTH_SHORT)
                                             .show();
-                                    Intent i = new Intent(SampleOnly.this, Sent.class);
+                                    Intent i = new Intent(SampleOnly.this, Security.class);
                                     startActivity(i);
                                 }
                             })

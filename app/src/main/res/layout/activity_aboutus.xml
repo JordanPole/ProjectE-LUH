@@ -31,7 +31,7 @@
             android:layout_width="358dp"
             android:layout_height="114dp"
             android:fontFamily="@font/comic_neue"
-            android:text="E-LUH is an Electronic Application made to prevent and lessen human trafficking incidents. We aim to encourage every individual to utilize their opportunity to help someone in need through our application, Identify human trafficking and respond appropriately."
+            android:text="Electronic - Location Ubiquitous Help (E-LUH) is an Electronic Application made to prevent and lessen human trafficking incidents. We aim to encourage every individual to utilize their opportunity to help someone in need through our application, Identify human trafficking and respond appropriately."
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
